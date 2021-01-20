@@ -17,7 +17,7 @@ Func ParaServicoDoAtualizador($pCaminho)
     ShellExecute($pCaminho)
     MsgBox($MB_SYSTEMMODAL, "", "O Serviço do tualizador foi parado")
  Else
-     MsgBox($MB_SYSTEMMODAL, "", "O serviço do atualizador já está parado")
+     MsgBox(1,"","O serviço do atualizador já está parado",200)
 
     EndIf
 
@@ -32,7 +32,7 @@ Func IniciaServicoDoAtualizador($pCaminho)
    )
 
  Else
-      ShellExecute($pCaminho
+      ShellExecute($pCaminho)
 	  MsgBox($MB_SYSTEMMODAL, "", "O Serviço do tualizador foi inicializado")
     EndIf
 
