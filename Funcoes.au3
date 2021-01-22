@@ -19,9 +19,9 @@ Func ParaServico($pCaminhoBat,$pNomeExecutavel)
     $pid = ProcessExists("Atualizador_Web.exe")
     ShellExecute($pCaminhoBat)
 	Sleep(10000)
-    MsgBox(1, "", "O Serviço do tualizador foi parado")
+    MsgBox(1, "", "O Serviço do "&$pNomeExecutavel&"  foi parado")
  Else
-     MsgBox(1,"","O serviço do atualizador já está parado")
+     MsgBox(1,"","O serviço "&$pNomeExecutavel&" já está parado")
 
     EndIf
 
@@ -34,12 +34,14 @@ EndFunc
 Func IniciaServico($pCaminhoBat,$pNomeExecutavel)
 
    If ProcessExists($pNomeExecutavel) Then ; Check if the Atualizador_web is running
-     MsgBox($MB_SYSTEMMODAL, "", "O serviço do atualizador já está iniciado")
-   )
+     MsgBox(1, "", "O serviço "&$pNomeExecutavel&" já está iniciado")
+
 
  Else
       ShellExecute($pCaminhoBat)
-	  MsgBox($MB_SYSTEMMODAL, "", "O Serviço do tualizador foi inicializado")
+	  Sleep(10000)
+	  MsgBox(1, "", "O Serviço do "&$pNomeExecutavel&"  foi inicializado")
+
     EndIf
 
 
@@ -47,9 +49,7 @@ EndFunc
 
 ;Funçao responsavel por fazer as cópias dos bancos do Retaguarda
 ; Deve ser passado como parâmetro o caminho do diretório onde estão os bancos do Retaguarda
-Func CopiaBancoDoRetaguarda($pCaminhoAmbienteDeTeste)
-local $caminhoPadrao =  "C:\Facil\Retaguarda\DB\DB.FDB"
-local $caminhoAlterado =  "C:\Facil\Retaguarda\DB\DB_AUTOIT.FDB "
+Func CopiaBanco($pCaminhoAmbienteDeTeste,$caminhoPadrao,$caminhoAlterado)
 
   ; Verifica se existe o banco que pretendemos copiar
   If  FileExists($pCaminhoAmbienteDeTeste) Then
@@ -77,8 +77,18 @@ local $caminhoAlterado =  "C:\Facil\Retaguarda\DB\DB_AUTOIT.FDB "
 		 EndIf
 
 	  Else
-		; Copia banco do Retaguarda do ambiente de testes para o caminho padrão
-	    FileCopy($pCaminhoAmbienteDeTeste,$caminhoPadrao)
+
+		 if $caminhoPadrao == $DirRetaguardaGerencial then
+            ; cria a pasta gerencial
+			DirCreate($DirGerencial)
+			Sleep(5000)
+		    ; Copia banco do Retaguarda do ambiente de testes para o caminho padrão
+	       FileCopy($pCaminhoAmbienteDeTeste,$caminhoPadrao)
+		Else
+		    ; Copia banco do Retaguarda do ambiente de testes para o caminho padrão
+			FileCopy($pCaminhoAmbienteDeTeste,$caminhoPadrao)
+
+		EndIf
 
 	  EndIf
 
@@ -92,6 +102,7 @@ local $caminhoAlterado =  "C:\Facil\Retaguarda\DB\DB_AUTOIT.FDB "
 
 
    EndIf
+
 
 EndFunc
 
