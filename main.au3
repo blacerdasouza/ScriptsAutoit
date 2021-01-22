@@ -1,37 +1,35 @@
 #include<Funcoes.au3>
+#include<VariaveisGlobais.au3>
 
-; Caminho dos bancos de teste
-
-; Rataguarda uma empresa
-Global $retaguardaUmaEmpresa = "D:\AutomacaoAmbienteAtualizacao\Empresa um banco\BancoRetaguarda\DB.FDB"
-; Atualizador Limpo
-Global $AtualizadorDB = "D:\AutomacaoAmbienteAtualizacao\Empresa um banco\BancoAtualizador\DB_ATUALIZADOR.FDB"
-
-
-
-; Caminhos dos atalhos dos bats configurados para serem executados como administrador
-Global $batParaServicoAtualizador = "D:\ScriptsAutoIt\ArquivosAutomacao\Bats\Atalhos\ParaAtualizador.bat.lnk"
-Global $batIniciaServicoAtualizador = "D:\ScriptsAutoIt\ArquivosAutomacao\Bats\Atalhos\IniciaAtualizador.bat.lnk"
-Global $batParaFireBird = "D:\ScriptsAutoIt\ArquivosAutomacao\Bats\Atalhos\ParaFirebird.bat.lnk"
-Global $batIniniaFirebird = "D:\ScriptsAutoIt\ArquivosAutomacao\Bats\Atalhos\IniciaFirebird.bat.lnk"
-
-; Nome dos executáveis responsaveis pelos serviços
-
-Global $AtualizadorExe = "Atualizador_Web.exe"
-Global $Firebird = "fbserver.exe"
 
  ; Automatiazacao da preparacao do ambiente de atualização automática
 
 ; 1 : Parar o serviço do Atualizador
-    ;ParaServico($batParaServicoAtualizador,$AtualizadorExe)
+    ParaServico($batParaServicoAtualizador,$AtualizadorExe)
 ; 2 : Parar o Firebird
-    ;ParaServico($batParaFireBird,$Firebird)
+    ParaServico($batParaFirebird,$FirebirdServer)
 ; 3 : Copiar o banco(s) do Retaguarda para o caminho padrão
-    ;CopiaBancoDoRetaguarda($retaguardaUmaEmpresa)
-; 4 : Copiar o banco do Atualizador da pasta de testes para a pasta do banco do atualizador
+    CopiaBanco($retaguardaMultiEmpresaOrigem,$DirRetaguarda,$DirRetaguardaAlterado)
 
-; 5 : Iniciar o firebird
+; 4 : Copiar o banco(s) do Retaguarda para o caminho padrão
+    CopiaBanco($retaguardaMultiEmpresaOrigem,$DirRetaguarda,$DirRetaguardaAlterado)
 
-; 6 ; verificar se tem alguma pasta versões no caminho padrão se tiver deletar a pasta
+; 5 : Copiar o banco do Atualizador da pasta de testes para a pasta do banco do atualizador
+    CopiaBanco($retaguardaMultiEmpresaDestino,$DirRetaguardaGerencial,$DirRetaguardaGerencialAlterado)
+; 6 : Iniciar o firebird Server
+    IniciaServico($batIniciaFirebirdServer,$firebirdServer)
 
-; 7 ; Iniciar o serviço do atualizador
+; 7 : Inicia firebird Guardian
+	 IniciaServico($batIniciaFirebirdGuardian,$FirebirdGuardian)
+
+
+
+; 8 ; verificar se tem alguma pasta versões no caminho padrão se tiver deletar a pasta
+      FileDelete($versoes)
+	  Sleep(5000)
+	  MsgBox(1,"","Pasta versoes deletada")
+; 9 ; Iniciar o serviço do atualizador
+     IniciaServico($batIniciaServicoAtualizador,$AtualizadorExe)
+
+; 10 processo realizado com sucesso
+   MsgBox(1,"","O Ambiente de atualização foi preparado com sucesso")
