@@ -15,11 +15,13 @@ Global $retaguardaMultiEmpresaDestino = "D:\AutomacaoAmbienteAtualizacao\Multiem
 
 ;;;;;;;;;;;;;;;;;;; Caminhos dos atalhos dos bats configurados para serem executados como administrador;;;;;;;;;;;;;;;
 
-Global $batParaServicoAtualizador = "D:\ScriptsAutoIt\ArquivosAutomacao\Bats\Atalhos\ParaAtualizador.bat.lnk"
-Global $batIniciaServicoAtualizador = "D:\ScriptsAutoIt\ArquivosAutomacao\Bats\Atalhos\IniciaAtualizador.bat.lnk"
-Global $batParaFireBird = "D:\ScriptsAutoIt\ArquivosAutomacao\Bats\Atalhos\ParaFirebird.bat.lnk"
-Global $batIniciaFirebirdServer = "D:\ScriptsAutoIt\ArquivosAutomacao\Bats\Atalhos\IniciaFirebirdServer.bat.lnk"
-Global $batIniciaFirebirdGuardian = "D:\ScriptsAutoIt\ArquivosAutomacao\Bats\Atalhos\IniciaFirebirdGuardian.bat.lnk"
+D:\ScriptsAutoIt\PreparaAmbienteAtualizacao\ArquivosAutomacao\Bats\Atalhos
+
+Global $batParaServicoAtualizador = "D:\ScriptsAutoIt\PreparaAmbienteAtualizacao\ArquivosAutomacao\Bats\Atalhos\ParaAtualizador.bat.lnk"
+Global $batIniciaServicoAtualizador = "D:\ScriptsAutoIt\PreparaAmbienteAtualizacao\ArquivosAutomacao\Bats\Atalhos\IniciaAtualizador.bat.lnk"
+Global $batParaFireBird = "D:\ScriptsAutoIt\PreparaAmbienteAtualizacao\ArquivosAutomacao\Bats\Atalhos\ParaFirebird.bat.lnk"
+Global $batIniciaFirebirdServer = "D:\ScriptsAutoIt\PreparaAmbienteAtualizacao\ArquivosAutomacao\Bats\Atalhos\IniciaFirebirdServer.bat.lnk"
+Global $batIniciaFirebirdGuardian = "D:\ScriptsAutoIt\PreparaAmbienteAtualizacao\ArquivosAutomacao\Bats\Atalhos\IniciaFirebirdGuardian.bat.lnk"
 
 ;;;;;;; Nome dos executáveis responsaveis pelos serviços;;;;;;;;;;;
 
